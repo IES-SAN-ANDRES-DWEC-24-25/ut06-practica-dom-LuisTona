@@ -52,26 +52,27 @@ function crearbotones(event) {
   if(event.target.classList.contains('subir')){
     subirList();
   }else if(event.target.classList.contains('bajar')){
-    bajarList()
+    bajarList();
   }else if(event.target.classList.contains('borrar')){
-    event.target.parentNode.remove()
+    event.target.parentNode.remove();
   }
 
   function subirList(){
     for(let k = 0; k < lis.length; k++){
       if(lis[k] == event.target.parentNode && k != 0){
         let li = lis[k - 1].childNodes[0].textContent;
-        lis[k - 1].childNodes[0].textContent = lis[k].childNodes[0].textContent
-        lis[k].childNodes[0].textContent = li
+        lis[k - 1].childNodes[0].textContent = lis[k].childNodes[0].textContent;
+        lis[k].childNodes[0].textContent = li;
       }
     }
   }
+
   function bajarList(){
     for(let k = 0; k < lis.length; k++){
       if(lis[k] == event.target.parentNode && k != lis.length -1){
         let li = lis[k + 1].childNodes[0].textContent;
-        lis[k + 1].childNodes[0].textContent = lis[k].childNodes[0].textContent
-        lis[k].childNodes[0].textContent = li
+        lis[k + 1].childNodes[0].textContent = lis[k].childNodes[0].textContent;
+        lis[k].childNodes[0].textContent = li;
       }
     }
   }
@@ -79,15 +80,20 @@ function crearbotones(event) {
 
 function MostrarOcultarLista(){
 // Muestra u oculta la información de las cosas que son violeta (listDiv)
-  listDiv.classList.toggle('noVisible')
+  listDiv.classList.toggle('noVisible');
 }
 function CambiarTextoLista(){
 //Modifica  el texto de la lista (descriptionP) con el valor del input (descriptionInput).
 // Inicialmente COSAS QUE SON VIOLETA
+  descriptionP.textContent = descriptionInput.value.toUpperCase();
 }
 function AñadirElemento(){
 //Añade un nuevo elemento a la lista con el valor del input (addItemInput). 
 //Recuerda que el elemento tendrá que tener sus botones de subir, bajar y borrar.
+  let li = document.createElement('li');
+  li.textContent = addItemInput.value;
+  listUl.appendChild(li);
+  attachListItemButtons(li);
 }
 
 
